@@ -20,11 +20,15 @@ module.exports = {
         {
           presets:['es2015', 'es2016','react', 'stage-0']
         } },
-      { test: /\.scss$/, loaders: [ 'style', 'css', 'sass' ]}
+      { test: /\.scss$/, loaders: [ 'style', 'css-loader', 'sass' ]},
+      {
+        test: /\.css$/,
+        loaders: [ 'style-loader', 'css-loader', 'css-loader?importLoaders=1', 'font-loader?format[]=truetype&format[]=woff&format[]=embedded-opentype' ]
+      }
     ]
   },
   devServer: {
-    contentBase: path.join(__dirname, "public"),
+    contentBase: path.join(__dirname, "public", '/node_modules/'),
     port: 3000,
   },
   plugins: [HtmlWebpackPluginConfig]
