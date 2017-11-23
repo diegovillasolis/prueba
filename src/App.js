@@ -5,7 +5,7 @@ class App extends Component {
   constructor(props){
     super(props);
     this.state = {
-      city: "La Paz",
+      city: "Cochabamba",
       weather: null
     };
   }
@@ -30,7 +30,7 @@ class App extends Component {
     if(this.state.weather)    
     return (
       <div className="App" ref="myRef">
-        <h1>Temperatura Actual: {this.state.weather.main.temp} °F</h1>
+        <h1>Temperatura Actual: {(this.state.weather.main.temp-273.00).toFixed(2)} °C</h1>
       </div>
     );
     return(
