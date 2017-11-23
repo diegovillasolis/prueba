@@ -7,13 +7,13 @@ let fetchWeather = function(city) {
 
   return fetch(weatherUrl)
     .then(
-      (response) => {        
+      response => {
         if (!response.ok) {
           throw Error(response.statusText);
         }
-        response.json();
-      }
-    ).catch(
+        return response.json();
+      })
+    .catch(
       error => {
         console.log(error);
       });

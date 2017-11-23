@@ -5,7 +5,7 @@ class App extends Component {
   constructor(props){
     super(props);
     this.state = {
-      city: "Cochabama",
+      city: "Cochabamba",
       weather: null
     };
   }
