@@ -5,7 +5,18 @@ let fetchWeather = function(city) {
   let weatherUrl =
     `${API_URL}data/2.5/weather?q=${city}&appid=${API_KEY}`;
 
-  return fetch(weatherUrl).then((response) => response.json());
+  return fetch(weatherUrl)
+    .then(
+      (response) => {        
+        if (!response.ok) {
+          throw Error(response.statusText);
+        }
+        response.json();
+      }
+    ).catch(
+      error => {
+        console.log(error);
+      });
 }
 
 export { fetchWeather };
