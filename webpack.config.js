@@ -1,6 +1,7 @@
 const path = require('path');
 const Dotenv = require('dotenv-webpack');
 
+const CopyWebpackPlugin = require('copy-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const HtmlWebpackPluginConfig = new HtmlWebpackPlugin({
   template: './public/index.html',
@@ -12,7 +13,7 @@ module.exports = {
   entry: './src/index.js',
   output: {
     path: path.resolve('dist'),
-    filename: 'bundle.js'
+    filename: 'bundle.js',
   },
   module: {
     rules: [
@@ -25,6 +26,16 @@ module.exports = {
       {
         test: /\.css$/,
         loaders: [ 'style-loader', 'css-loader', 'css-loader?importLoaders=1', 'font-loader?format[]=truetype&format[]=woff&format[]=embedded-opentype' ]
+      }, 
+      { test: /\.json$/, loader: 'json-loader' },
+      {
+        test: /\.(txt|jpg|gif)$/,
+        use: [
+          {
+            loader: 'file-loader',
+            options: {}  
+          }
+        ]
       }
     ]
   },
@@ -32,5 +43,8 @@ module.exports = {
     contentBase: path.join(__dirname, "public", '/node_modules/'),
     port: 3000,
   },
-  plugins: [HtmlWebpackPluginConfig, new Dotenv()]
+  plugins: [new CopyWebpackPlugin([
+    { from: '/src/assets/city.list.json', to: 'src/assests/city.list.json' },
+  ])
+]
 };

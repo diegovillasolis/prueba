@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import {fetchWeather} from './utils/api';
 import Search from './components/Search';
 import WeatherItem from './components/WeatherItem';
+import { Container } from 'semantic-ui-react';
 
 class App extends Component {
   constructor(props){
@@ -30,15 +31,19 @@ class App extends Component {
   render() {
     if(this.state.weather)   
     return (
-      <div className="App" ref="myRef">
-        <Search onChange={(city) => this.handleChange(city)}/>
-        <WeatherItem currentWeather={this.state.weather}/>
-      </div>
+      <Container textAlign='center'>
+        <div className="App" ref="myRef">
+          <Search onChange={(city) => this.handleChange(city)} />
+          <WeatherItem currentWeather={this.state.weather} />
+        </div>
+      </Container>
     );    
     return(
-      <div className="App" ref="myRef">
-      <Search onChange={(city) => this.handleChange(city)}/>
-      </div>
+      <Container textAlign='center'>
+        <div className="App" ref="myRef">
+          <Search onChange={(city) => this.handleChange(city)} />
+        </div>
+      </Container>
     );
   }
 }

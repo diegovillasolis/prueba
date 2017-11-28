@@ -7,17 +7,29 @@ import { fetchWeather } from '../utils/api';
 class Search extends React.Component{
   constructor(props){
     super(props);
+
+    this.state = {
+      value: '',
+      selectedCity: '',
+      cities: []
+    };
+
     this.handleChange = this.handleChange.bind(this);
-    this.cityOptions = [
-      { key: 'CB', value: 'Cochabamba', text: 'Cochabamba' },
-      { key: 'SB', value: 'Sacaba', text: 'Sacaba' },
-      { key: 'AR', value: 'Arani', text: 'Arani' },
-      { key: 'CR', value: 'Carrasco', text: 'Carrasco' },
-      { key: 'CP', value: 'Capinota', text: 'Capinota' },
-      { key: 'MZ', value: 'Mizque', text: 'Mizque' },
-      { key: 'PN', value: 'Punata', text: 'Punata' },
-    ];
-    this.state = {value: ""};
+  }
+
+  componentDidMount() {
+    fetch('./assets/city.list.json')
+      .then((res) => {
+        if (!res.ok) {
+          throw Error(res.statusText);
+        }
+        const cities = JSON.parse(res);
+        this.setState({
+          cities: cities.filter(e => e.country == 'BO').map(e => ({key:e.id, value:e.name, text:e.name}))
+        });
+      }).catch((error) => {
+        console.log(error);
+      });
   }
 
   handleChange(e, { value }){
@@ -30,7 +42,7 @@ class Search extends React.Component{
   render(){
     return (
       <div className="Search">
-        <Dropdown placeholder='City...' search selection options={this.cityOptions}  onChange={this.handleChange}  value={this.state.value} />
+        <Dropdown placeholder='City...' search selection options={this.state.cities}  onChange={this.handleChange}  value={this.state.value} />
       </div>
     );    
   }
