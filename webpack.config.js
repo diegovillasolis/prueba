@@ -17,11 +17,7 @@ module.exports = {
   },
   module: {
     rules: [
-      { test: /\.jsx?$/, loader: 'babel-loader', exclude: /node_modules/,
-      options:
-        {
-          presets:['es2015', 'es2016','react', 'stage-0']
-        } },
+      { test: /\.jsx?$/, loader: 'babel-loader', exclude: /node_modules/, },
       { test: /\.scss$/, loaders: [ 'style', 'css-loader', 'sass' ]},
       {
         test: /\.css$/,

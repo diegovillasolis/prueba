@@ -6,10 +6,10 @@ class WeatherPrincipal extends React.Component{
     return (
       <div className="WeatherPrincipal">
         <Grid.Column width={16}>
-          <h1 className="City">{this.props.data.city}</h1>
+          <h1>{this.props.data.city}</h1>
         </Grid.Column>
         <Grid.Column width={16}>
-          <span className="Temperature">
+          <span>
             {(this.props.data.temp).toFixed(2)} °C
           </span>
         </Grid.Column>

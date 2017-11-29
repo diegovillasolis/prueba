@@ -18,10 +18,17 @@ class Search extends React.Component{
 
   componentDidMount() {
     fetch('./assets/city.list.json')
-    .then(response => response.json())
-    .then(cities => this.setState({ cities: cities.filter(e => e.country == 'BO').map(e => ({key:e.id, value:e.name, text:e.name})) }))
-    .catch(error => console.log(error));
-
+      .then(
+        response => response.json()
+      ).then(
+        cities => this.setState({
+          cities: cities
+            .filter(e => e.country == 'BO')
+            .map(e => ({ key: e.id, value: e.name, text: e.name }))
+        })
+      ).catch(
+        error => console.log(error)
+    );
   }
 
   handleChange(e, { value }){
