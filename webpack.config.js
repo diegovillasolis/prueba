@@ -43,8 +43,10 @@ module.exports = {
     contentBase: path.join(__dirname, "public", '/node_modules/'),
     port: 3000,
   },
-  plugins: [new CopyWebpackPlugin([
-    { from: '/src/assets/city.list.json', to: 'src/assests/city.list.json' },
-  ])
-]
+  plugins: [HtmlWebpackPluginConfig, new Dotenv(),
+    new CopyWebpackPlugin([{
+       from: 'assets/city.list.json', to: 'assets/city.list.json' },
+      ]),
+
+  ]
 };
