@@ -1,6 +1,7 @@
 const path = require('path');
 const Dotenv = require('dotenv-webpack');
 
+const CopyWebpackPlugin = require('copy-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const HtmlWebpackPluginConfig = new HtmlWebpackPlugin({
   template: './public/index.html',
@@ -12,21 +13,36 @@ module.exports = {
   entry: './src/index.js',
   output: {
     path: path.resolve('dist'),
-    filename: 'bundle.js'
+    filename: 'bundle.js',
   },
   module: {
     rules: [
-      { test: /\.jsx?$/, loader: 'babel-loader', exclude: /node_modules/,
-      options:
-        {
-          presets:['es2015', 'es2016','react', 'stage-0']
-        } },
-      { test: /\.scss$/, loaders: [ 'style', 'css', 'sass' ]}
+      { test: /\.jsx?$/, loader: 'babel-loader', exclude: /node_modules/, },
+      { test: /\.scss$/, loaders: [ 'style', 'css-loader', 'sass' ]},
+      {
+        test: /\.css$/,
+        loaders: [ 'style-loader', 'css-loader', 'css-loader?importLoaders=1', 'font-loader?format[]=truetype&format[]=woff&format[]=embedded-opentype' ]
+      }, 
+      { test: /\.json$/, loader: 'json-loader' },
+      {
+        test: /\.(txt|jpg|gif)$/,
+        use: [
+          {
+            loader: 'file-loader',
+            options: {}  
+          }
+        ]
+      }
     ]
   },
   devServer: {
-    contentBase: path.join(__dirname, "public"),
+    contentBase: path.join(__dirname, "public", '/node_modules/'),
     port: 3000,
   },
-  plugins: [HtmlWebpackPluginConfig, new Dotenv()]
+  plugins: [HtmlWebpackPluginConfig, new Dotenv(),
+    new CopyWebpackPlugin([{
+       from: 'assets/city.list.json', to: 'assets/city.list.json' },
+      ]),
+
+  ]
 };

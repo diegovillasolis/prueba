@@ -3,7 +3,8 @@ const API_URL = process.env.REACT_APP_OPEN_WEATHER_URL;
 
 let fetchWeather = function(city) {
   let weatherUrl =
-    `${API_URL}data/2.5/weather?q=${city}&appid=${API_KEY}`;
+    `${API_URL}data/2.5/weather?q=${city}&units=metric&appid=${API_KEY}`;
+
 
   return fetch(weatherUrl)
     .then(
