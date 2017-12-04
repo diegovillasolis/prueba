@@ -17,7 +17,8 @@ class WeatherItem extends React.Component{
     
     const principalWeather = {
       city: this.props.currentWeather.name,
-      temp: this.props.currentWeather.main.temp
+      temp: this.props.currentWeather.main.temp,
+      icon: this.props.currentWeather.weather[0].icon
     };
 
     return (

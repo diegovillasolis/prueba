@@ -18,6 +18,6 @@ let fetchWeather = function(city) {
       error => {
         console.log(error);
       });
-}
+};
 
 export { fetchWeather };
