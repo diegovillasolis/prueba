@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import {fetchWeather} from './utils/api';
+import {fetchWeather, fetchForecast } from './utils/api';
 import Search from './components/Search';
 import WeatherItem from './components/WeatherItem';
 import { Container } from 'semantic-ui-react';
@@ -9,7 +9,7 @@ class App extends Component {
     super(props);
     this.handleChange = this.handleChange.bind(this);
     this.state = {
-      weather: null
+      weather: null,
     };
   }
 
@@ -25,16 +25,16 @@ class App extends Component {
   }
 
   handleChange(city){
-    this.getWeather(city);    
+    this.getWeather(city);  
   }
 
   render() {
-    if(this.state.weather)   
+    if(this.state.weather)    
     return (
       <Container textAlign='center'>
         <div className="App" ref="myRef">
           <Search onChange={(city) => this.handleChange(city)} />
-          <WeatherItem currentWeather={this.state.weather} />
+          <WeatherItem currentWeather={this.state.weather} />          
         </div>
       </Container>
     );    
