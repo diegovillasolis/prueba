@@ -3,7 +3,7 @@ import {fetchWeather, fetchForecast } from './utils/api';
 import Search from './components/Search';
 import WeatherItem from './components/WeatherItem';
 import { Container } from 'semantic-ui-react';
-import WeatherList from './components/WeatherList';
+import WeatherWeek from './components/WeatherWeek';
 
 class App extends Component {
   constructor(props){
@@ -34,6 +34,7 @@ class App extends Component {
           forecast: response,
         });
       }
+      console.log(response);
     });  
   }
 
@@ -49,7 +50,7 @@ class App extends Component {
         <div className="App" ref="myRef">
           <Search onChange={(city) => this.handleChange(city)} />
           <WeatherItem currentWeather={this.state.weather} /> 
-          <WeatherList city={this.state.weather.name} forecast={this.state.forecast}/>         
+          <WeatherWeek forecast={this.state.forecast}/>         
         </div>
       </Container>
     );    

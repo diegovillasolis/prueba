@@ -1,35 +1,35 @@
 import React from 'react';
 import WeatherPrincipal from '../components/WeatherPrincipal';
 import { Grid } from 'semantic-ui-react';
+import WeatherDay from './WeatherDay';
 
-class WeatherList extends React.Component {
+class WeatherWeek extends React.Component {
   render(){    
-    const city = this.props.city;
     const list = this.props.forecast.list;
-    const day1 = new Date(list[0].dt);
+    const day1 = new Date(list[0].dt*1000);
     const hour1 = day1.getHours();
 
-    
-    //console.log(hour1, (new Date(list[8].dt)).getHours());
-    const weatherPrincipalList = list.filter( e => {    
+    const weatherDayList = list.filter( e => {    
       return (new Date(e.dt*1000)).getHours() === hour1;      
     }).map( e => {
-        const principalWeather = {
-          city: city,
-          temp: e.main.temp
+        const dayWeather = {
+          date: e.dt,
+          tempMin: e.main.temp_min,
+          tempMax: e.main.temp_max,
+          icon: e.weather[0].icon
         };
         return (
-        <WeatherPrincipal key={e.dt} data={principalWeather} />
+        <WeatherDay key={e.dt} data={dayWeather} />
         );
       });
 
-    console.log(weatherPrincipalList);
+    console.log(weatherDayList);
 
     return(
       <div className="WeatherList">
         <Grid centered>
           <Grid.Row>
-            {weatherPrincipalList}
+            {weatherDayList}
           </Grid.Row>
         </Grid>
       </div>
@@ -37,4 +37,4 @@ class WeatherList extends React.Component {
   }
 }
 
-export default WeatherList;
+export default WeatherWeek;
