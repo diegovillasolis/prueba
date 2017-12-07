@@ -9,6 +9,7 @@ class App extends Component {
   constructor(props){
     super(props);
     this.handleChange = this.handleChange.bind(this);
+    this.handleClick = this.handleClick.bind(this);
     this.state = {
       weather: null,
       forecast: null
@@ -43,6 +44,12 @@ class App extends Component {
     this.getForecast(city);    
   }
 
+  handleClick(newWeather){
+    this.setState({
+      weather: newWeather
+    });
+  }
+
   render() {
     if(this.state.weather && this.state.forecast)    
     return (
@@ -50,7 +57,7 @@ class App extends Component {
         <div className="App" ref="myRef">
           <Search onChange={(city) => this.handleChange(city)} />
           <WeatherItem currentWeather={this.state.weather} /> 
-          <WeatherWeek forecast={this.state.forecast}/>         
+          <WeatherWeek forecast={this.state.forecast} onClick={(newWeather) => this.handleClick(newWeather)}/>         
         </div>
       </Container>
     );    

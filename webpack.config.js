@@ -21,7 +21,7 @@ module.exports = {
       { test: /\.scss$/, loaders: [ 'style', 'css-loader', 'sass' ]},
       {
         test: /\.css$/,
-        loaders: [ 'style-loader', 'css-loader', 'css-loader?importLoaders=1', 'font-loader?format[]=truetype&format[]=woff&format[]=embedded-opentype' ]
+        use: [ 'style-loader', 'css-loader', 'css-loader?importLoaders=1', 'font-loader?format[]=truetype&format[]=woff&format[]=embedded-opentype' ]
       }, 
       { test: /\.json$/, loader: 'json-loader' },
       {
