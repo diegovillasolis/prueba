@@ -41,7 +41,8 @@ module.exports = {
   },
   plugins: [HtmlWebpackPluginConfig, new Dotenv(),
     new CopyWebpackPlugin([{
-       from: 'assets/city.list.json', to: 'assets/city.list.json' },
+       from: 'public/assets/city.list.json', to: 'public/assets/city.list.json' },
+       { from: 'public/assets/images', to: 'public/assets/images' },
       ]),
 
   ]

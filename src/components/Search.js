@@ -17,7 +17,7 @@ class Search extends React.Component{
   }
 
   componentDidMount() {
-    fetch('./assets/city.list.json')
+    fetch('./public/assets/city.list.json')
       .then(
         response => response.json()
       ).then(
