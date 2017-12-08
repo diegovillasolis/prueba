@@ -31,7 +31,7 @@ class WeatherWeek extends React.Component {
         icon: e.weather[0].icon
       };
       return (
-        <WeatherDay key={e.dt} data={dayWeather} onClick={(newWeather) => this.handleClick(newWeather)} />
+        <WeatherDay key={e.dt} data={dayWeather} onClick={this.handleClick} />
       );
     });
 

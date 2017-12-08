@@ -16,32 +16,19 @@ class App extends Component {
     };
   }
 
-  getWeather(city){
-    fetchWeather(city)
-    .then((response) => {
-      if (this.refs.myRef) {
-        this.setState({
-          weather: response,
-        });
-      }
+  getData(city){
+    Promise.all([fetchWeather(city), fetchForecast(city)]).then(values => {
+      this.setState({
+        weather: values[0],
+        forecast: values[1]
+      });
+    }).catch(reason => { 
+      console.log(reason);
     });
   }
 
-  getForecast(city){
-    fetchForecast(city)
-    .then((response) => {
-      if (this.refs.myRef) {
-        this.setState({
-          forecast: response,
-        });
-      }
-      console.log(response);
-    });  
-  }
-
   handleChange(city){
-    this.getWeather(city);
-    this.getForecast(city);    
+    this.getData(city);   
   }
 
   handleClick(newWeather){
@@ -57,7 +44,7 @@ class App extends Component {
         <div className="App" ref="myRef">
           <Search onChange={(city) => this.handleChange(city)} />
           <WeatherItem currentWeather={this.state.weather} /> 
-          <WeatherWeek forecast={this.state.forecast} onClick={(newWeather) => this.handleClick(newWeather)}/>         
+          <WeatherWeek forecast={this.state.forecast} onClick={this.handleClick}/>         
         </div>
       </Container>
     );    
