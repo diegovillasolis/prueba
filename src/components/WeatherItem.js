@@ -20,7 +20,6 @@ class WeatherItem extends React.Component{
       city: this.props.currentWeather.name,
       temp: this.props.currentWeather.main.temp,
     };
-    console.log(principalWeather);
 
     return (
       <div className="WeatherItem">
