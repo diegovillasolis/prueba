@@ -36,7 +36,7 @@ module.exports = {
     ]
   },
   devServer: {
-    contentBase: path.join(__dirname, "public", '/node_modules/'),
+    contentBase: path.join(__dirname, "public"),
     port: 3000,
   },
   plugins: [HtmlWebpackPluginConfig, new Dotenv(),

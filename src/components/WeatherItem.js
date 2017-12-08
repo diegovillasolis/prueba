@@ -16,10 +16,11 @@ class WeatherItem extends React.Component{
     };
     
     const principalWeather = {
+      id: this.props.currentWeather.weather[0].id,
       city: this.props.currentWeather.name,
       temp: this.props.currentWeather.main.temp,
-      icon: this.props.currentWeather.weather[0].icon
     };
+    console.log(principalWeather);
 
     return (
       <div className="WeatherItem">

@@ -7,7 +7,7 @@ class WeatherPrincipal extends React.Component{
     return (
       <div className="WeatherPrincipal">
         <Grid.Column width={8}>          
-          <span><img src={`http://openweathermap.org/img/w/${this.props.data.icon}.png`}/></span>
+          <i className={`owf owf-${this.props.data.id} owf-3x`}></i>
         </Grid.Column>        
         <Grid.Column width={8}>          
           <h1>{this.props.data.city}</h1>
