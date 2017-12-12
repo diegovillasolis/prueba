@@ -36,12 +36,13 @@ module.exports = {
     ]
   },
   devServer: {
-    contentBase: path.join(__dirname, "public", '/node_modules/'),
+    contentBase: path.join(__dirname, "public"),
     port: 3000,
   },
   plugins: [HtmlWebpackPluginConfig, new Dotenv(),
     new CopyWebpackPlugin([{
-       from: 'assets/city.list.json', to: 'assets/city.list.json' },
+       from: 'public/assets/city.list.json', to: 'public/assets/city.list.json' },
+       { from: 'public/assets/images', to: 'public/assets/images' },
       ]),
 
   ]
