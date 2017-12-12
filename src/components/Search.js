@@ -24,7 +24,7 @@ class Search extends React.Component{
         cities => this.setState({
           cities: cities
             .filter(e => e.country == 'BO')
-            .map(e => ({ key: e.id, value: e.name, text: e.name }))
+            .map(e => ({ key: e.id, value: e.id, text: e.name }))
         })
       ).catch(
         error => console.log(error)
