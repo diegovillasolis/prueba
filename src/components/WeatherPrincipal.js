@@ -1,6 +1,7 @@
 import React from 'react';
 import { Grid } from 'semantic-ui-react';
 import WeatherIcon from './WeatherIcon';
+import PropTypes from 'prop-types';
 
 class WeatherPrincipal extends React.Component{
   render(){
@@ -21,5 +22,13 @@ class WeatherPrincipal extends React.Component{
     );
   }
 }
+
+WeatherPrincipal.propTypes = {
+  data: PropTypes.shape({
+    icon: PropTypes.string,
+    city: PropTypes.string,
+    temp: PropTypes.number
+  })
+};
 
 export default WeatherPrincipal;

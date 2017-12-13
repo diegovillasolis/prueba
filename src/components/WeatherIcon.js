@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 class WeatherIcon extends React.Component{
   render(){
@@ -9,5 +10,9 @@ class WeatherIcon extends React.Component{
     );
   }
 }
+
+WeatherIcon.propTypes = {
+  id: PropTypes.string
+};
 
 export default WeatherIcon;
