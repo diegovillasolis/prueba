@@ -1,5 +1,6 @@
 import React from 'react';
-import { Grid, Segment, Table } from 'semantic-ui-react'
+import { Grid, Segment, Table } from 'semantic-ui-react';
+import PropTypes from 'prop-types';
 
 class WeatherDetail extends React.Component{
   render(){
@@ -40,5 +41,16 @@ class WeatherDetail extends React.Component{
     );
   }
 }
+
+WeatherDetail.propTypes = {
+  data: PropTypes.shape({
+    tempMax: PropTypes.number,
+    tempMin: PropTypes.number,
+    pressure: PropTypes.number,
+    humidity: PropTypes.number,
+    weatherType: PropTypes.string,
+    description: PropTypes.string,
+  })
+};
 
 export default WeatherDetail;

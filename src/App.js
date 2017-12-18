@@ -42,8 +42,8 @@ class App extends Component {
     return (
       <Container textAlign='center'>
         <div className="App" ref="myRef">
-          <Search onChange={(city) => this.handleChange(city)} />
-          <WeatherItem currentWeather={this.state.weather} /> 
+          <Search onChange={this.handleChange} />
+          <WeatherItem weather={this.state.weather} /> 
           <WeatherWeek forecast={this.state.forecast} onClick={this.handleClick}/>         
         </div>
       </Container>
@@ -51,7 +51,7 @@ class App extends Component {
     return(
       <Container textAlign='center'>
         <div className="App" ref="myRef">
-          <Search onChange={(city) => this.handleChange(city)} />
+          <Search onChange={this.handleChange} />
         </div>
       </Container>
     );
