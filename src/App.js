@@ -14,25 +14,30 @@ class App extends Component {
     this.handleChangeScaleTemp = this.handleChangeScaleTemp.bind(this);
     this.state = {    
       scales: {
-        temperature:'degC',
+        temperature: {
+          name: '°C',
+          symbol: 'degC'
+        },
       }     
     };
   }
 
-  handleChangeScaleTemp(value){
-    if (value !== this.state.scales.temperature)
-      this.setState((prevState) => {
-        return {
+  handleChangeScaleTemp(value, text){
+    console.log("text: ", text);
+    if (value !== this.state.scales.temperature.symbol)
+      this.setState(
+        {
           scales: {
-            temperature: value
+            temperature: {
+              name: text,
+              symbol: value
+            }
           }
-        };
-      });    
+        }
+      );  
   }
 
   render() {
-    const scales = this.state.scales;
-    console.log(scales);
     return (      
       <div className="Principal" style={{height: '100vh'}}>
         <Sidebar.Pushable as={Segment}>
@@ -42,7 +47,7 @@ class App extends Component {
             />            
           </Sidebar>
           <Sidebar.Pusher>
-            <Principal scales={scales}/>
+            <Principal scales={this.state.scales}/>
           </Sidebar.Pusher>
         </Sidebar.Pushable>
       </div>

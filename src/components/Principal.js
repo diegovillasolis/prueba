@@ -5,7 +5,6 @@ import WeatherItem from './WeatherItem';
 import { Container } from 'semantic-ui-react';
 import WeatherWeek from './WeatherWeek';
 import math from 'mathjs';
-import { units } from '../../public/assets/common/units';
 
 class Principal extends Component {
   constructor(props){
@@ -40,8 +39,8 @@ class Principal extends Component {
   }
 
   componentWillReceiveProps(nextProps){
-    const currentScale = this.props.scales.temperature;    
-    const targetScale = nextProps.scales.temperature;
+    const currentScale = this.props.scales.temperature.symbol;    
+    const targetScale = nextProps.scales.temperature.symbol;
     
     if (currentScale !== targetScale && this.state.weather) {
       const currentTemp = this.state.weather.main.temp;
@@ -74,7 +73,7 @@ class Principal extends Component {
       <Container textAlign='center'>
         <div className="App" ref="myRef">
           <Search onChange={this.handleChange} />
-          <WeatherItem currentWeather={this.state.weather}/> 
+          <WeatherItem currentWeather={this.state.weather} scales={this.props.scales}/> 
           <WeatherWeek forecast={this.state.forecast} onClick={this.handleClick}/> 
         </div>        
       </Container>

@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Sidebar, Segment, Button, Menu, Image, Icon, Header, Dropdown } from 'semantic-ui-react';
-import { units } from '../../public/assets/common/units';
+import units from '../../public/assets/common/units';
 
 class Settings extends Component {
   constructor(props){
@@ -8,21 +8,21 @@ class Settings extends Component {
     this.handleChangeScaleTemp = this.handleChangeScaleTemp.bind(this);
   }
 
-  handleChangeScaleTemp(e, { value }){
-    this.props.onChangeScaleTemp(value);    
+  handleChangeScaleTemp(e, { value, options }){
+    let text = options.find(e => e.value === value).text;
+    this.props.onChangeScaleTemp(value, text);    
   }
 
   render() {
     const tempOptions = units
-      .filter(e => e.name === 'temperature')
-      .shift()
-      .scale.map(e => {return {text:e.name, value:e.symbol};});
+      .temperature
+      .map(e => {return {text:e.name, value:e.symbol};});
 
     return (
       <div className="Config">
         <Menu.Item name='Settings'>
           <Menu.Header>Settings</Menu.Header>
-          <Dropdown text='Temperature' selection options={tempOptions} className="Settings" onChange={this.handleChangeScaleTemp}/> 
+          <Dropdown selection options={tempOptions} className="Settings" onChange={this.handleChangeScaleTemp}/> 
         </Menu.Item>
       </div>
     );
