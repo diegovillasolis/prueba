@@ -5,6 +5,7 @@ class WeatherDay extends React.Component{
   constructor(props){
     super(props);
     this.handleClick = this.handleClick.bind(this);
+    this.state = { tempScale: "" };
   }
 
   handleClick(){

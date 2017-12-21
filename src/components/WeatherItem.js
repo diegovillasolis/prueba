@@ -4,8 +4,7 @@ import WeatherDetail from './WeatherDetail';
 import WeatherPrincipal from './WeatherPrincipal';
 
 class WeatherItem extends React.Component{
-  render() {
-        
+  render() {        
     const detailedWeather = {
       tempMax: this.props.currentWeather.main.temp_max,
       tempMin: this.props.currentWeather.main.temp_min,
