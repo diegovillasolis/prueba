@@ -19,20 +19,9 @@ module.exports = {
     rules: [
       { test: /\.jsx?$/, loader: 'babel-loader', exclude: /node_modules/, },
       { test: /\.scss$/, loaders: [ 'style', 'css-loader', 'sass' ]},
-      {
-        test: /\.css$/,
-        use: [ 'style-loader', 'css-loader', 'css-loader?importLoaders=1', 'font-loader?format[]=truetype&format[]=woff&format[]=embedded-opentype' ]
-      }, 
+      { test: /\.css$/, loaders: [ 'style-loader', 'css-loader', 'font-loader']}, 
       { test: /\.json$/, loader: 'json-loader' },
-      {
-        test: /\.(txt|jpg|gif)$/,
-        use: [
-          {
-            loader: 'file-loader',
-            options: {}  
-          }
-        ]
-      }
+      { test: /\.(eot|woff|woff2|svg|ttf|txt|jpg|gif|png)([\?]?.*)$/, loader: "file-loader" },
     ]
   },
   devServer: {
