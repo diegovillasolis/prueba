@@ -37,7 +37,7 @@ class WeatherWeek extends React.Component {
     });
 
     return(
-      <div className="WeatherList">
+      <div className="WeatheWeek">
         <Grid centered>
           <Grid.Row>
             {weatherDayList}
@@ -95,7 +95,8 @@ WeatherWeek.propTypes = {
         dt_txt: PropTypes.string
       })
     )
-  })
+  }),
+  onClick: PropTypes.func.isRequired
 };
 
 export default WeatherWeek;

@@ -12,7 +12,7 @@ class WeatherIcon extends React.Component{
 }
 
 WeatherIcon.propTypes = {
-  id: PropTypes.string
+  id: PropTypes.string.isRequired
 };
 
 export default WeatherIcon;

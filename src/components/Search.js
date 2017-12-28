@@ -3,6 +3,7 @@ import { Select } from 'semantic-ui-react';
 import { Input } from 'semantic-ui-react';
 import { Dropdown } from 'semantic-ui-react';
 import { fetchWeather } from '../utils/api';
+import PropTypes from 'prop-types';
 
 class Search extends React.Component{
   constructor(props){
@@ -42,6 +43,10 @@ class Search extends React.Component{
       </div>
     );    
   }
+}
+
+Search.propTypes = {
+  onChange: PropTypes.func.isRequired
 }
 
 export default Search
