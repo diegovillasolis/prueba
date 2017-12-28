@@ -45,13 +45,19 @@ class WeatherDetail extends React.Component{
 
 WeatherDetail.propTypes = {
   data: PropTypes.shape({
-    tempMax: PropTypes.number,
-    tempMin: PropTypes.number,
-    pressure: PropTypes.number,
-    humidity: PropTypes.number,
-    weatherType: PropTypes.string,
-    description: PropTypes.string,
-  })
+    tempMax: PropTypes.number.isRequired,
+    tempMin: PropTypes.number.isRequired,
+    pressure: PropTypes.number.isRequired,
+    humidity: PropTypes.number.isRequired,
+    weatherType: PropTypes.string.isRequired,
+    description: PropTypes.string.isRequired,
+  }).isRequired,
+  scales: PropTypes.shape({
+    temperature: PropTypes.shape({
+      name: PropTypes.string.isRequired,
+      symbol: PropTypes.string.isRequired
+    }).isRequired
+  }).isRequired
 };
 
 export default WeatherDetail;

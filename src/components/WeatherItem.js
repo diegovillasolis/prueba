@@ -80,7 +80,13 @@ WeatherItem.propTypes = {
     id: PropTypes.number,
     name: PropTypes.string,
     cod: PropTypes.number,
-  })
+  }),
+  scales: PropTypes.shape({
+    temperature: PropTypes.shape({
+      name: PropTypes.string.isRequired,
+      symbol: PropTypes.string.isRequired
+    }).isRequired
+  }).isRequired
 };
 
 export default WeatherItem;

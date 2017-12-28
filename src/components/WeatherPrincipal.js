@@ -26,10 +26,16 @@ class WeatherPrincipal extends React.Component{
 
 WeatherPrincipal.propTypes = {
   data: PropTypes.shape({
-    icon: PropTypes.string,
-    city: PropTypes.string,
-    temp: PropTypes.number
-  })
+    icon: PropTypes.string.isRequired,
+    city: PropTypes.string.isRequired,
+    temp: PropTypes.number.isRequired
+  }).isRequired,
+  scales: PropTypes.shape({
+    temperature: PropTypes.shape({
+      name: PropTypes.string.isRequired,
+      symbol: PropTypes.string.isRequired
+    }).isRequired
+  }).isRequired
 };
 
 export default WeatherPrincipal;

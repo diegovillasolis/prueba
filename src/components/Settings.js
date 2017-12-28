@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Sidebar, Segment, Button, Menu, Image, Icon, Header, Dropdown } from 'semantic-ui-react';
 import units from '../../public/assets/common/units';
+import PropTypes from 'prop-types';
 
 class Settings extends Component {
   constructor(props){
@@ -27,6 +28,10 @@ class Settings extends Component {
       </div>
     );
   }
+}
+
+Settings.propTypes = {
+  onChangeScaleTemp: PropTypes.func.isRequired
 }
 
 export default Settings;
