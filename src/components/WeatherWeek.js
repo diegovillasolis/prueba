@@ -2,6 +2,7 @@ import React from 'react';
 import WeatherPrincipal from '../components/WeatherPrincipal';
 import { Grid } from 'semantic-ui-react';
 import WeatherDay from './WeatherDay';
+import PropTypes from 'prop-types';
 
 class WeatherWeek extends React.Component {
   constructor(props){
@@ -46,5 +47,55 @@ class WeatherWeek extends React.Component {
     );
   }
 }
+
+WeatherWeek.propTypes = {
+  forecast: PropTypes.shape({
+    city: PropTypes.shape({
+      id: PropTypes.number, 
+      name: PropTypes.string
+    }),
+    coord: PropTypes.shape({ 
+      lon: PropTypes.number,
+      lat: PropTypes.number
+    }),
+    country: PropTypes.string,
+    cod: PropTypes.string,
+    message: PropTypes.number,
+    cnt: PropTypes.number,
+    list: PropTypes.arrayOf(
+      PropTypes.shape({
+        dt: PropTypes.number,
+        main: PropTypes.shape({
+          temp: PropTypes.number,
+          temp_min: PropTypes.number,
+          temp_max: PropTypes.number,
+          pressure: PropTypes.number,
+          sea_level: PropTypes.number,
+          grnd_level: PropTypes.number,
+          humidity: PropTypes.number,
+          temp_kf: PropTypes.number
+        }),
+        weather: PropTypes.arrayOf(
+          PropTypes.shape({ 
+            id: PropTypes.number, 
+            main: PropTypes.string, 
+            description: PropTypes.string, 
+            icon: PropTypes.string })
+          ),
+        clouds: PropTypes.shape({ 
+          all: PropTypes.number
+        }),
+        wind: PropTypes.shape({ 
+          speed: PropTypes.number, 
+          deg: PropTypes.number 
+        }),
+        sys: PropTypes.shape({ 
+          pod: PropTypes.string 
+        }),
+        dt_txt: PropTypes.string
+      })
+    )
+  })
+};
 
 export default WeatherWeek;

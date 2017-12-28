@@ -20,6 +20,7 @@
     "mathjs": "^3.17.0",
     "node-sass": "^4.7.2",
     "path": "^0.12.7",
+    "prop-types": "^15.6.0",
     "react": "^16.1.1",
     "react-dom": "^16.1.1",
     "react-redux": "^5.0.6",

@@ -1,5 +1,6 @@
 import React from 'react';
 import { Grid } from 'semantic-ui-react';
+import PropTypes from 'prop-types';
 
 class WeatherDay extends React.Component{
   constructor(props){
@@ -32,5 +33,14 @@ class WeatherDay extends React.Component{
     );
   }
 }
+
+WeatherDay.propTypes = {
+  data: PropTypes.shape({
+    date: PropTypes.number,
+    tempMin: PropTypes.number,
+    tempMax: PropTypes.number,
+    icon: PropTypes.string
+  })
+};
 
 export default WeatherDay;
