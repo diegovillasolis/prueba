@@ -5,6 +5,7 @@ import PropTypes from 'prop-types';
 
 class WeatherPrincipal extends React.Component{
   render(){
+    const scale = this.props.scales.temperature.name;
     return (
       <div className="WeatherPrincipal">
         <Grid.Column width={8}>          
@@ -15,7 +16,7 @@ class WeatherPrincipal extends React.Component{
         </Grid.Column>
         <Grid.Column width={16}>
           <span>
-            {(this.props.data.temp).toFixed(2)} °C
+            {`${(this.props.data.temp).toFixed(2)} ${scale}`}
           </span>
         </Grid.Column>
       </div>      

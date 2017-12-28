@@ -4,6 +4,7 @@ import PropTypes from 'prop-types';
 
 class WeatherDetail extends React.Component{
   render(){
+    const scale = this.props.scales.temperature.name;
     return (
       <div className="WheatherDetail">
         <Grid.Column width={16}>
@@ -16,11 +17,11 @@ class WeatherDetail extends React.Component{
             <Table.Body>
               <Table.Row>
                 <Table.Cell>Maximum temperature</Table.Cell>
-                <Table.Cell>{(this.props.data.tempMax).toFixed(2)} °C</Table.Cell>
+                <Table.Cell>{`${(this.props.data.tempMax).toFixed(2)} ${scale}`}</Table.Cell>
               </Table.Row>
               <Table.Row>
                 <Table.Cell>Minimun temperature</Table.Cell>
-                <Table.Cell>{(this.props.data.tempMin).toFixed(2)} °C</Table.Cell>
+                <Table.Cell>{`${(this.props.data.tempMin).toFixed(2)} ${scale}`}</Table.Cell>
               </Table.Row>
               <Table.Row>
                 <Table.Cell>Preasure</Table.Cell>

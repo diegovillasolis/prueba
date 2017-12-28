@@ -10,10 +10,11 @@ class Search extends React.Component{
 
     this.state = {
       selectedCity: '',
-      cities: []
+      cities: [],
+      loading:true,
     };
 
-    this.handleChange = this.handleChange.bind(this);
+    this.handleChange = this.handleChange.bind(this);    
   }
 
   componentDidMount() {
@@ -22,6 +23,7 @@ class Search extends React.Component{
         response => response.json()
       ).then(
         cities => this.setState({
+          loading:false,
           cities: cities
             .filter(e => e.country == 'BO')
             .map(e => ({ key: e.id, value: e.id, text: e.name }))
@@ -38,7 +40,7 @@ class Search extends React.Component{
   render(){
     return (
       <div className="Search">
-        <Dropdown placeholder='City...' search selection options={this.state.cities}  onChange={this.handleChange}  />
+        <Dropdown placeholder='City...' search selection options={this.state.cities}  onChange={this.handleChange} loading={this.state.loading} />
       </div>
     );    
   }

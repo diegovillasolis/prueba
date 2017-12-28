@@ -5,8 +5,7 @@ import WeatherPrincipal from './WeatherPrincipal';
 import PropTypes from 'prop-types';
 
 class WeatherItem extends React.Component{
-  render() {
-        
+  render() {        
     const detailedWeather = {
       tempMax: this.props.weather.main.temp_max,
       tempMin: this.props.weather.main.temp_min,
@@ -26,10 +25,10 @@ class WeatherItem extends React.Component{
       <div className="WeatherItem">
         <Grid centered>
           <Grid.Row>
-            <WeatherPrincipal data={principalWeather} />
+            <WeatherPrincipal data={principalWeather} scales={this.props.scales} />
           </Grid.Row>
           <Grid.Row>
-            <WeatherDetail data={detailedWeather} />
+            <WeatherDetail data={detailedWeather} scales={this.props.scales} />
           </Grid.Row>
         </Grid>
       </div>
