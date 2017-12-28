@@ -7,13 +7,11 @@ import { fetchWeather } from '../utils/api';
 class Search extends React.Component{
   constructor(props){
     super(props);
-
     this.state = {
       selectedCity: '',
       cities: [],
       loading:true,
     };
-
     this.handleChange = this.handleChange.bind(this);    
   }
 

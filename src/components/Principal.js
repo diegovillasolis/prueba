@@ -67,16 +67,17 @@ class Principal extends Component {
   }
 
   render() {
-    console.log(this.state.weather);
     if(this.state.weather && this.state.forecast)    
     return (
-      <Container textAlign='center'>
-        <div className="App" ref="myRef">
-          <Search onChange={this.handleChange} />
-          <WeatherItem currentWeather={this.state.weather} scales={this.props.scales}/> 
-          <WeatherWeek forecast={this.state.forecast} onClick={this.handleClick}/> 
-        </div>        
-      </Container>
+      <div className="Principal">
+        <Container textAlign='center'>
+          <div className="App" ref="myRef">
+            <Search onChange={this.handleChange} />
+            <WeatherItem weather={this.state.weather} scales={this.props.scales} />
+            <WeatherWeek forecast={this.state.forecast} onClick={this.handleClick} />
+          </div>
+        </Container>
+      </div>
     );    
     return(
       <div className="Principal">
