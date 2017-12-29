@@ -36,7 +36,6 @@ class WeatherDay extends React.Component{
 }
 
 WeatherDay.propTypes = {
-  key: PropTypes.number,
   data: PropTypes.shape({
     date: PropTypes.number.isRequired,
     tempMin: PropTypes.number.isRequired,

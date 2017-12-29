@@ -6,14 +6,11 @@ import PropTypes from 'prop-types';
 
 class WeatherItem extends React.Component{
   render() {
-
     const {main: { temp_max: tempMax, temp_min: tempMin, pressure, humidity, temp}, weather: [first], name: city, } = this.props.weather;
     const description = first.description;
     const icon = first.icon;
-    const detailedWeather = { tempMax, tempMin, pressure, humidity, description};
-    console.log(detailedWeather);
 
-        
+    const detailedWeather = { tempMax, tempMin, pressure, humidity, description};        
     const principalWeather = { icon, city, temp };
 
     return (

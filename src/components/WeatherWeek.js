@@ -28,10 +28,10 @@ class WeatherWeek extends React.Component {
       })
       .map(e => {
         const dayWeather = {
-        date: e.dt,
-        tempMin: e.main.temp_min,
-        tempMax: e.main.temp_max,
-        icon: e.weather[0].icon
+          date: e.dt,
+          tempMin: e.main.temp_min,
+          tempMax: e.main.temp_max,
+          icon: e.weather[0].icon
         };
         return (
           <WeatherDay key={e.dt} data={dayWeather} onClick={this.handleClick} />

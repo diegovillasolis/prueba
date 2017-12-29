@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import {fetchWeather, fetchForecast } from '../utils/api';
+import { fetchWeather, fetchForecast } from '../utils/api';
 import Search from './Search';
 import WeatherItem from './WeatherItem';
 import { Container } from 'semantic-ui-react';

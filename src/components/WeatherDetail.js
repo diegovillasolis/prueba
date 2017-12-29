@@ -49,7 +49,6 @@ WeatherDetail.propTypes = {
     tempMin: PropTypes.number.isRequired,
     pressure: PropTypes.number.isRequired,
     humidity: PropTypes.number.isRequired,
-    weatherType: PropTypes.string.isRequired,
     description: PropTypes.string.isRequired,
   }).isRequired,
   scales: PropTypes.shape({
