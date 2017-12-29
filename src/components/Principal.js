@@ -5,6 +5,7 @@ import WeatherItem from './WeatherItem';
 import { Container } from 'semantic-ui-react';
 import WeatherWeek from './WeatherWeek';
 import math from 'mathjs';
+import PropTypes from 'prop-types';
 
 class Principal extends Component {
   constructor(props){
@@ -76,7 +77,7 @@ class Principal extends Component {
     return(
       <div className="Principal">
         <Container textAlign='center'>
-          <div className="App" ref="myRef">
+          <div className="App">
             <Search onChange={this.handleChange} />
             {weatherItem}
             {weatherWeek}
@@ -86,5 +87,14 @@ class Principal extends Component {
     );    
   }
 }
+
+Principal.propTypes = {
+  scales: PropTypes.shape({
+    temperature: PropTypes.shape({
+      name: PropTypes.string.isRequired,
+      symbol: PropTypes.string.isRequired
+    }).isRequired
+  }).isRequired
+};
 
 export default Principal;

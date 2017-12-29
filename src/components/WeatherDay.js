@@ -36,12 +36,14 @@ class WeatherDay extends React.Component{
 }
 
 WeatherDay.propTypes = {
+  key: PropTypes.number,
   data: PropTypes.shape({
-    date: PropTypes.number,
-    tempMin: PropTypes.number,
-    tempMax: PropTypes.number,
-    icon: PropTypes.string
-  })
+    date: PropTypes.number.isRequired,
+    tempMin: PropTypes.number.isRequired,
+    tempMax: PropTypes.number.isRequired,
+    icon: PropTypes.string.isRequired
+  }).isRequired,
+  onClick: PropTypes.func.isRequired
 };
 
 export default WeatherDay;
