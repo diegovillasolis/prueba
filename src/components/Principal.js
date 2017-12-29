@@ -18,14 +18,18 @@ class Principal extends Component {
   }
 
   getData(city){
-    Promise.all([fetchWeather(city), fetchForecast(city)]).then(values => {
-      this.setState({
-        weather: values[0],
-        forecast: values[1]
+    Promise
+      .all([fetchWeather(city), fetchForecast(city)])
+      .then(values => {
+        this.setState({
+          weather: values[0],
+          forecast: values[1]
+        });
+      })
+      .catch(
+        reason => { 
+          console.log(reason);
       });
-    }).catch(reason => { 
-      console.log(reason);
-    });
   }
 
   handleChange(city){
@@ -47,19 +51,16 @@ class Principal extends Component {
       const currentTempMin = this.state.weather.main.temp_min;
       const currentTempMax = this.state.weather.main.temp_max;
 
-      let value = {
-        pressure: this.state.weather.main.pressure,
-        humidity: this.state.weather.main.humidity,
-        temp: math.unit(currentTemp, currentScale).toNumber(targetScale),
-        temp_min: math.unit(currentTempMin, currentScale).toNumber(targetScale),
-        temp_max: math.unit(currentTempMax, currentScale).toNumber(targetScale)
-      };
-
       this.setState((prevState) => {
         return {
           weather: {
             ...prevState.weather,            
-            main: value
+            main: {
+              ...prevState.weather.main,
+              temp: math.unit(currentTemp, currentScale).toNumber(targetScale),
+              temp_min: math.unit(currentTempMin, currentScale).toNumber(targetScale),
+              temp_max: math.unit(currentTempMax, currentScale).toNumber(targetScale)
+            }
           }
         };
       });
@@ -67,23 +68,18 @@ class Principal extends Component {
   }
 
   render() {
-    if(this.state.weather && this.state.forecast)    
-    return (
-      <div className="Principal">
-        <Container textAlign='center'>
-          <div className="App" ref="myRef">
-            <Search onChange={this.handleChange} />
-            <WeatherItem weather={this.state.weather} scales={this.props.scales} />
-            <WeatherWeek forecast={this.state.forecast} onClick={this.handleClick} />
-          </div>
-        </Container>
-      </div>
-    );    
+    let weatherItem = null, weatherWeek = null;
+    if(this.state.weather && this.state.forecast){
+      weatherItem = <WeatherItem weather={this.state.weather} scales={this.props.scales} />;
+      weatherWeek = <WeatherWeek forecast={this.state.forecast} onClick={this.handleClick} />
+    }    
     return(
       <div className="Principal">
         <Container textAlign='center'>
           <div className="App" ref="myRef">
             <Search onChange={this.handleChange} />
+            {weatherItem}
+            {weatherWeek}
           </div>
         </Container>
       </div>

@@ -1,7 +1,5 @@
 import React from 'react';
-import { Select } from 'semantic-ui-react';
-import { Input } from 'semantic-ui-react';
-import { Dropdown } from 'semantic-ui-react';
+import { Select, Input, Dropdown } from 'semantic-ui-react';
 import { fetchWeather } from '../utils/api';
 
 class Search extends React.Component{
@@ -19,26 +17,39 @@ class Search extends React.Component{
     fetch('./public/assets/city.list.json')
       .then(
         response => response.json()
-      ).then(
+      )
+      .then(
         cities => this.setState({
           loading:false,
           cities: cities
-            .filter(e => e.country == 'BO')
-            .map(e => ({ key: e.id, value: e.id, text: e.name }))
+            .filter(e => e.country === 'BO')
+            .map(e => ({ key: e.id, value: e.id, text: e.name })),
         })
-      ).catch(
+      )
+      .catch(
         error => console.log(error)
-    );
+      );
   }
 
   handleChange(e, { value }){
+    this.setState({
+      selectedCity: value
+    });
     this.props.onChange(value);    
   }
   
   render(){
     return (
       <div className="Search">
-        <Dropdown placeholder='City...' search selection options={this.state.cities}  onChange={this.handleChange} loading={this.state.loading} />
+        <Dropdown 
+          placeholder='City...' 
+          search 
+          selection 
+          options={this.state.cities}  
+          onChange={this.handleChange} 
+          loading={this.state.loading} 
+          value={this.state.selectedCity}
+        />
       </div>
     );    
   }

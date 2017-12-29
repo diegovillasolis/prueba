@@ -1,6 +1,7 @@
 import React from 'react';
 import { Grid } from 'semantic-ui-react';
 import PropTypes from 'prop-types';
+import WeatherIcon from './WeatherIcon';
 
 class WeatherDay extends React.Component{
   constructor(props){
@@ -21,7 +22,7 @@ class WeatherDay extends React.Component{
       <div className="WeatherDay" onClick={this.handleClick}>
         {weekDay[(new Date(weatherDay.date*1000)).getDay()]}
         <Grid.Column width={16}>          
-          <span><img src={`http://openweathermap.org/img/w/${weatherDay.icon}.png`}/></span>
+          <WeatherIcon id={weatherDay.icon} />
         </Grid.Column>
         <Grid.Column width={8}>
             {weatherDay.tempMax} °C

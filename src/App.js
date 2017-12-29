@@ -23,7 +23,6 @@ class App extends Component {
   }
 
   handleChangeScaleTemp(value, text){
-    console.log("text: ", text);
     if (value !== this.state.scales.temperature.symbol)
       this.setState(
         {
@@ -39,14 +38,14 @@ class App extends Component {
 
   render() {
     return (      
-      <div className="Principal" style={{height: '100vh'}}>
+      <div className="Principal" style={{height: '110vh'}}>
         <Sidebar.Pushable as={Segment}>
-          <Sidebar as={Menu} animation='overlay' width='wide' visible={true} icon='labeled' vertical inverted>
+          <Sidebar as={Menu} animation='push' width='thin' visible={true} icon='labeled' vertical inverted>
             <Settings 
               onChangeScaleTemp={this.handleChangeScaleTemp} 
             />            
           </Sidebar>
-          <Sidebar.Pusher>
+          <Sidebar.Pusher >
             <Principal scales={this.state.scales}/>
           </Sidebar.Pusher>
         </Sidebar.Pushable>

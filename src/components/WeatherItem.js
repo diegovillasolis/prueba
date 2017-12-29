@@ -5,21 +5,16 @@ import WeatherPrincipal from './WeatherPrincipal';
 import PropTypes from 'prop-types';
 
 class WeatherItem extends React.Component{
-  render() {        
-    const detailedWeather = {
-      tempMax: this.props.weather.main.temp_max,
-      tempMin: this.props.weather.main.temp_min,
-      pressure: this.props.weather.main.pressure,
-      humidity: this.props.weather.main.humidity,
-      weatherType: this.props.weather.weather[0].description,
-      description: this.props.weather.weather[0].main,
-    };
-    
-    const principalWeather = {
-      icon: this.props.weather.weather[0].icon,
-      city: this.props.weather.name,
-      temp: this.props.weather.main.temp,
-    };
+  render() {
+
+    const {main: { temp_max: tempMax, temp_min: tempMin, pressure, humidity, temp}, weather: [first], name: city, } = this.props.weather;
+    const description = first.description;
+    const icon = first.icon;
+    const detailedWeather = { tempMax, tempMin, pressure, humidity, description};
+    console.log(detailedWeather);
+
+        
+    const principalWeather = { icon, city, temp };
 
     return (
       <div className="WeatherItem">

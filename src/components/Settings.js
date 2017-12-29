@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Sidebar, Segment, Button, Menu, Image, Icon, Header, Dropdown } from 'semantic-ui-react';
 import units from '../../public/assets/common/units';
+import PropTypes from 'prop-types';
 
 class Settings extends Component {
   constructor(props){
@@ -19,14 +20,18 @@ class Settings extends Component {
       .map(e => {return {text:e.name, value:e.symbol};});
 
     return (
-      <div className="Config">
+      <div className="Settings">
         <Menu.Item name='Settings'>
           <Menu.Header>Settings</Menu.Header>
-          <Dropdown selection options={tempOptions} className="Settings" onChange={this.handleChangeScaleTemp}/> 
+          <Dropdown selection options={tempOptions} onChange={this.handleChangeScaleTemp} compact placeholder='°C'  /> 
         </Menu.Item>
       </div>
     );
   }
+}
+
+Settings.propTypes = {
+  onChangeScaleTemp: PropTypes.func.isRequired
 }
 
 export default Settings;
